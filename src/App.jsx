@@ -8,10 +8,18 @@ import MaritimeMapBanner from "./components/Maritime-map";
 import HeroSection from "./components/HeroSection";
 import StoryHub from "./pages/StoryHub";
 import Shipping from "./components/Shipping";
+import MaritimeTraining from "./pages/MaritimeTraining";
+import MaritimeLeadership from "./pages/MaritimeLeadership";
+import KnowledgeHub from "./pages/KnowledgeHub";
+import MediaCentre from "./pages/MediaCentre";
+import IndiaMap from "./pages/IndiaMap";
+import Shipbuilding from "./pages/Shipbuilding";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
           <Route
@@ -27,9 +35,15 @@ function App() {
             }
           />
 
-          <Route index element={<HeroSection />} />
+          
           <Route path="/ship-recycling" element={<Shipping />} />
           <Route path="/stories" element={<StoryHub />} />
+          <Route path="/training" element={<MaritimeTraining />} />
+          <Route path="/leadership" element={<MaritimeLeadership />} />
+          <Route path="/knowledge-hub" element={<KnowledgeHub />} />
+          <Route path="/media-centre" element={<MediaCentre />} />
+          <Route path="/india-map" element={<IndiaMap />} />
+          <Route path="/shipbuilding" element={<Shipbuilding />} />
         </Route>
       </Routes>
     </BrowserRouter>
