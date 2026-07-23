@@ -23,10 +23,10 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-[#0A284D] w-full text-white shadow-md font-sans">
       <Container>
         {/* Top Header Row - Concentrated center alignment like reference */}
-        <div className="relative flex items-center justify-center py-4">
+        <div className="relative flex items-center justify-center gap-20 py-3">
           
           {/* Left Logos (Positioned towards center-left) */}
-          <div className="flex items-center space-x-3 mr-8 sm:mr-16 md:mr-24">
+          <div className="flex items-center space-x-3 mr-8 sm:mr-16 md:mr-18">
             <img
               src={headerImg1}
               alt="Government of India"
@@ -53,11 +53,11 @@ const Header = () => {
           </div>
 
           {/* Right Logos (Positioned towards center-right) */}
-          <div className="flex items-center space-x-3 ml-8 sm:ml-16 md:ml-24">
+          <div className="flex items-center space-x-3 ml-8 sm:ml-16 md:ml-30">
             <img
               src={headerImg3}
               alt="Azadi Ka Amrit Mahotsav & Swachh Bharat"
-              className="h-9 md:h-11 w-auto object-contain brightness-0 invert"
+              className="h-10 md:h-14 w-auto object-contain brightness-0 invert"
             />
           </div>
         </div>
@@ -80,17 +80,19 @@ const Header = () => {
           </nav>
 
           {/* Right Actions - Absolute to right edge on desktop */}
-          <div className="hidden lg:flex items-center space-x-5 absolute right-0">
+        
+             <div className="hidden lg:flex items-center space-x-4 absolute right-10">
             <button
               aria-label="Search"
               className="text-gray-200 hover:text-[#D6AF36] transition-colors duration-200"
             >
               <FiSearch className="w-4 h-4" />
             </button>
-            <button className="bg-[#D6AF36] hover:bg-[#c29e2e] text-[#0A284D] font-bold px-4 py-2 rounded-md text-xs tracking-wide transition-colors duration-200">
+            <button className="bg-[#C9A827] hover:bg-[#c29e2e] text-[#0A284D] font-bold px-2 py-2 rounded-md text-xs tracking-wide transition-colors duration-200">
               AI Assistant
             </button>
           </div>
+         
 
           {/* Mobile Hamburger Controls */}
           <div className="flex lg:hidden items-center justify-between w-full px-2">
