@@ -17,7 +17,7 @@ const HeroSection = () => {
           Ship Recycling
         </h1>
 
-        <p className="mt-3 max-w-xl text-base italic leading-relaxed text-[#C1622D] md:text-lg">
+        <p className="mt-3 max-w-xl text-base leading-relaxed text-[#C1622D] md:text-lg">
           Browse India's certified ship recycling facilities — from Alang's
           world-renowned yards to emerging coastal operations.
         </p>
