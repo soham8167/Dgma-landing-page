@@ -1,16 +1,13 @@
-import Container from "./common/Container"
-import Header from "./components/Header"
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
 
 function App() {
- 
-
   return (
     <>
-      <Container>
-      <Header/>
-      </Container>
+      <Header />
+      <HeroSection />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
