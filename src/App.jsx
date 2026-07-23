@@ -1,16 +1,17 @@
-import Container from "./common/Container"
-import Header from "./components/Header"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./layout/MainLayout";
+import Hero from "./components/Hero";
 
 function App() {
- 
-
   return (
-    <>
-      <Container>
-      <Header/>
-      </Container>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route index element={<Hero />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
