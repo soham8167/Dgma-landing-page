@@ -4,16 +4,49 @@ import { FiSearch, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import headerImg1 from "../assets/images/header-img1.png";
 import headerImg2 from "../assets/images/header-img2.png";
 import headerImg3 from "../assets/images/header-img3.png";
+import { NavLink } from "react-router-dom";
 
 const menuItems = [
-  { label: 'Ship Recycling', hasDropdown: true },
-  { label: 'Shipbuilding', hasDropdown: true },
-  { label: 'Maritime Training Institute', hasDropdown: true },
-  { label: 'Maritime Leadership', hasDropdown: true },
-  { label: 'Knowledge Hub', hasDropdown: false },
-  { label: 'Media Centre', hasDropdown: false },
-  { label: 'Stories', hasDropdown: false },
-  { label: 'India Map', hasDropdown: false },
+  {
+    label: "Ship Recycling",
+    path: "/ship-recycling",
+    hasDropdown: true,
+  },
+  {
+    label: "Shipbuilding",
+    path: "/shipbuilding",
+    hasDropdown: true,
+  },
+  {
+    label: "Maritime Training Institute",
+    path: "/training",
+    hasDropdown: true,
+  },
+  {
+    label: "Maritime Leadership",
+    path: "/leadership",
+    hasDropdown: true,
+  },
+  {
+    label: "Knowledge Hub",
+    path: "/knowledge-hub",
+    hasDropdown: false,
+  },
+  {
+    label: "Media Centre",
+    path: "/media-centre",
+    hasDropdown: false,
+  },
+  {
+    label: "Stories",
+    path: "/stories",
+    hasDropdown: false,
+  },
+  {
+    label: "India Map",
+    path: "/india-map",
+    hasDropdown: false,
+  },
 ];
 
 const Header = () => {
@@ -26,7 +59,7 @@ const Header = () => {
         <div className="relative flex items-center justify-center gap-20 py-3">
           
           {/* Left Logos (Positioned towards center-left) */}
-          <div className="flex items-center space-x-3 mr-8 sm:mr-16 md:mr-18">
+          <NavLink to="/" className="flex items-center space-x-3 mr-8 sm:mr-16 md:mr-18">
             <img
               src={headerImg1}
               alt="Government of India"
@@ -37,7 +70,7 @@ const Header = () => {
               alt="DG Shipping"
               className="h-11 md:h-14 w-auto object-contain"
             />
-          </div>
+          </NavLink>
 
           {/* Center Titles */}
           <div className="text-center hidden sm:block">
@@ -68,14 +101,21 @@ const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center space-x-6 lg:space-x-8 text-xs lg:text-sm font-normal">
             {menuItems.map((item, index) => (
-              <a
-                key={index}
-                href="#"
-                className="flex items-center gap-1.5 text-gray-200 hover:text-[#D6AF36] transition-colors duration-200 whitespace-nowrap"
-              >
-                <span>{item.label}</span>
-                {item.hasDropdown && <FiChevronDown className="w-3 h-3 text-gray-300" />}
-              </a>
+                          <NavLink
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 ${
+                  isActive
+                    ? "text-[#D6AF36]"
+                    : "text-gray-200 hover:text-[#D6AF36]"
+                }`
+              }
+            >
+              <span>{item.label}</span>
+              {item.hasDropdown && (
+                <FiChevronDown className="w-3 h-3 text-gray-300" />
+              )}
+            </NavLink>
             ))}
           </nav>
 
