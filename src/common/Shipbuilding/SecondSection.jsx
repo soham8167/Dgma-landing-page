@@ -27,7 +27,7 @@ const shipyardsData = [
     name: 'Cochin Shipyard Limited',
     location: 'Kochi, Kerala',
     rating: '4.6',
-    capabilities: 'Commercial Vessels / Offshore',
+    capabilities: 'Commercial Vessels / Offshore / Naval',
     capacity: '1.50 Million DWT',
     tags: ['ISO 9001', 'ISO 14001', 'OHSAS 18001'],
     image: s1,
@@ -144,24 +144,51 @@ const shipyardsData = [
   },
 ];
 
-const SecondSection = ({ searchQuery = '' }) => {
+const SecondSection = ({ searchQuery = '', selectedState = 'all', selectedType = 'all' }) => {
   const [viewMode, setViewMode] = useState('grid');
 
+  // Combined Search & Multi-Filter Logic
   const filteredShipyards = shipyardsData.filter((item) => {
+    // 1. Text Search Filter
     const query = searchQuery.toLowerCase().trim();
-    if (!query) return true;
+    if (query) {
+      const matchesSearch =
+        item.name.toLowerCase().includes(query) ||
+        item.location.toLowerCase().includes(query) ||
+        item.capabilities.toLowerCase().includes(query) ||
+        item.capacity.toLowerCase().includes(query);
 
-    return (
-      item.name.toLowerCase().includes(query) ||
-      item.location.toLowerCase().includes(query) ||
-      item.capabilities.toLowerCase().includes(query)
-    );
+      if (!matchesSearch) return false;
+    }
+
+    // 2. State Filter
+    if (selectedState !== 'all') {
+      const isStateMatch = item.location.toLowerCase().includes(selectedState.toLowerCase());
+      if (!isStateMatch) return false;
+    }
+
+    // 3. Category / Type Filter
+    if (selectedType !== 'all') {
+      const caps = item.capabilities.toLowerCase();
+
+      if (selectedType === 'Commercial & Defense') {
+        if (!caps.includes('commercial') || (!caps.includes('naval') && !caps.includes('defence'))) return false;
+      } else if (selectedType === 'Defense Sector') {
+        if (!caps.includes('naval') && !caps.includes('defence')) return false;
+      } else if (selectedType === 'Commercial Shipyard') {
+        if (!caps.includes('commercial')) return false;
+      } else if (selectedType === 'Ship Repair & Heavy') {
+        if (!caps.includes('repair') && !caps.includes('offshore')) return false;
+      }
+    }
+
+    return true;
   });
 
   return (
     <section className="w-full max-w-[1562px] min-h-355.25 bg-[#D8E5DF] text-[#1B2A26] font-sans py-16 px-6 md:px-20 mx-auto flex flex-col justify-between">
       <div>
-        {/*  1. TOOLBAR / RESULTS HEADER */}
+        {/* TOOLBAR / RESULTS HEADER */}
         <div className="w-full flex items-center justify-between mb-8">
           <p className="text-sm font-medium text-[#425B54]">
             Showing <span className="font-bold text-[#1B2A26]">{filteredShipyards.length}</span> results
@@ -196,7 +223,7 @@ const SecondSection = ({ searchQuery = '' }) => {
           </div>
         </div>
 
-        {/*  2. SHIPYARDS GRID (4 Columns, 32px Gap)  */}
+        {/* SHIPYARDS GRID */}
         {filteredShipyards.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mb-12">
             {filteredShipyards.map((item) => (
@@ -204,7 +231,7 @@ const SecondSection = ({ searchQuery = '' }) => {
                 key={item.id}
                 className="w-81.5 h-100.5 bg-[#E8F0EC]/80 backdrop-blur-xs rounded-xl border border-[#C2D8CE] shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer"
               >
-                {/* Card Image Banner (326px x 160px) */}
+                {/* Card Image Banner */}
                 <div className="w-81.5 h-40 bg-[#22332F] relative overflow-hidden shrink-0">
                   {item.image ? (
                     <img
@@ -213,7 +240,7 @@ const SecondSection = ({ searchQuery = '' }) => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-full bg-linear-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
+                    <div className="w-full h-full bg-gradient-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
                   )}
 
                   {/* Top Left Icon Overlay Badge */}
@@ -282,22 +309,21 @@ const SecondSection = ({ searchQuery = '' }) => {
                       </span>
                     </div>
                   </div>
-
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div className="w-full py-16 text-center mb-12">
-            <p className="text-[#425B54] text-base font-medium">No shipyards found.</p>
+            <p className="text-[#425B54] text-base font-medium">
+              No shipyards found matching your filter criteria.
+            </p>
           </div>
         )}
       </div>
 
-      {/*  3. BOTTOM GREEN CONTAINER (1402px x 143px)  */}
+      {/* BOTTOM CALLOUT BANNER */}
       <div className="w-full max-w-350.5 min-h-35.75 bg-[#0C5A48] text-white rounded-2xl p-6 md:p-10 mx-auto flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-        
-        {/* Left Info Group */}
         <div className="flex items-center gap-5">
           <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
             <FiBriefcase className="w-6 h-6 text-white" />
@@ -312,11 +338,9 @@ const SecondSection = ({ searchQuery = '' }) => {
           </div>
         </div>
 
-        {/* Action Button */}
         <button className="h-12 px-6 bg-[#043328] hover:bg-[#02241C] border border-white/20 rounded-lg flex items-center justify-center text-xs font-bold text-white transition-all cursor-pointer whitespace-nowrap shrink-0 shadow-md">
           Become a Partner &rarr;
         </button>
-
       </div>
     </section>
   );
