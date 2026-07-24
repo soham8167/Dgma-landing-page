@@ -4,7 +4,7 @@ import { FiSearch, FiChevronDown, FiMenu, FiX } from "react-icons/fi";
 import headerImg1 from "../assets/images/header-img1.png";
 import headerImg2 from "../assets/images/header-img2.png";
 import headerImg3 from "../assets/images/header-img3.png";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 
 const menuItems = [
   {
@@ -47,17 +47,13 @@ const menuItems = [
     path: "/india-map",
     hasDropdown: false,
   },
-  {
-    label: "search",
-    path: "/search",
-    hasDropdown: false,
-  },
+  
 
 ];
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <header className="sticky top-0 z-50 bg-[#0A284D] w-full text-white shadow-md font-sans">
       <Container>
@@ -129,13 +125,17 @@ const Header = () => {
           {/* Right Actions - Absolute to right edge on desktop */}
         
              <div className="hidden lg:flex items-center space-x-4 absolute right-10">
-            <button
+                          <button
               aria-label="Search"
-              className="text-gray-200 hover:text-[#D6AF36] transition-colors duration-200"
+              onClick={() => navigate("/search")}
+              className="text-gray-200 hover:text-[#D6AF36] transition-colors duration-200 cursor-pointer"
             >
               <FiSearch className="w-4 h-4" />
             </button>
-            <button className="bg-[#C9A827] hover:bg-[#c29e2e] text-[#0A284D] font-bold px-2 py-2 rounded-md text-xs tracking-wide transition-colors duration-200">
+            <button
+              onClick={() => navigate("/ai-assistant")}
+              className="bg-[#C9A827] hover:bg-[#c29e2e] text-[#0A284D] font-bold px-2 py-2 rounded-md text-xs tracking-wide transition-colors duration-200 cursor-pointer"
+            >
               AI Assistant
             </button>
           </div>
@@ -147,9 +147,10 @@ const Header = () => {
               DG Shipping
             </span>
             <div className="flex items-center space-x-4 ml-auto">
-              <button
+                            <button
                 aria-label="Search"
-                className="text-gray-200 hover:text-[#D6AF36]"
+                onClick={() => navigate("/search")}
+                className="text-gray-200 hover:text-[#D6AF36] cursor-pointer"
               >
                 <FiSearch className="w-5 h-5" />
               </button>

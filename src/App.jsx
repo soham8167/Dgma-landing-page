@@ -19,6 +19,7 @@ import UniversalSearch from "./pages/Search";
 import { SearchProvider } from "./search/SearchProvider";
 import { registerSiteContent } from "./search/SearchContentRegistry";
 import { getSearchIndex } from "./search/SearchIndex";
+import AiAssistent from "./pages/AiAssistent";
 
 registerSiteContent();
 
@@ -51,6 +52,7 @@ function App() {
             <Route path="/india-map" element={<IndiaMap />} />
             <Route path="/shipbuilding" element={<Shipbuilding />} />
             <Route path="/search" element={<UniversalSearch />} />
+            <Route path="/ai-assistant" element={<AiAssistent />} />
           </Route>
         </Routes>
       </SearchProvider>

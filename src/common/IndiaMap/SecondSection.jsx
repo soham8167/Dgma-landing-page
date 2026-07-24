@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import indiaMap from "../../assets/images/indiaMap.png";
-import { FiExternalLink, FiCompass } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 
 const filterCategories = [
   { id: "all", label: "All (9)" },
@@ -19,8 +19,11 @@ const locationsData = [
     name: "Alang Ship Recycling Hub",
     location: "Alang, Gujarat",
     category: "recycling",
-    dotColor: "bg-[#C5A038]",
+    dotColor: "bg-[#D6AF36]",
     dotBg: "bg-[#F9F5EB]",
+    coords: "21.23° N, 72.18° E",
+    top: "54%",
+    left: "14%",
   },
   {
     id: 2,
@@ -29,6 +32,9 @@ const locationsData = [
     category: "building",
     dotColor: "bg-[#2B4C7E]",
     dotBg: "bg-[#EDF2F9]",
+    coords: "23.01° N, 70.21° E",
+    top: "48%",
+    left: "11%",
   },
   {
     id: 3,
@@ -37,6 +43,9 @@ const locationsData = [
     category: "building",
     dotColor: "bg-[#2B4C7E]",
     dotBg: "bg-[#EDF2F9]",
+    coords: "18.94° N, 72.85° E",
+    top: "62%",
+    left: "18%",
   },
   {
     id: 4,
@@ -45,6 +54,9 @@ const locationsData = [
     category: "training",
     dotColor: "bg-[#218396]",
     dotBg: "bg-[#EBF6F8]",
+    coords: "19.03° N, 73.02° E",
+    top: "63.5%",
+    left: "19.5%",
   },
   {
     id: 5,
@@ -53,6 +65,9 @@ const locationsData = [
     category: "building",
     dotColor: "bg-[#2B4C7E]",
     dotBg: "bg-[#EDF2F9]",
+    coords: "15.41° N, 73.80° E",
+    top: "72%",
+    left: "20%",
   },
   {
     id: 6,
@@ -61,6 +76,9 @@ const locationsData = [
     category: "training",
     dotColor: "bg-[#218396]",
     dotBg: "bg-[#EBF6F8]",
+    coords: "9.93° N, 76.26° E",
+    top: "84%",
+    left: "24%",
   },
   {
     id: 7,
@@ -69,14 +87,20 @@ const locationsData = [
     category: "training",
     dotColor: "bg-[#218396]",
     dotBg: "bg-[#EBF6F8]",
+    coords: "12.98° N, 80.24° E",
+    top: "80%",
+    left: "31%",
   },
   {
     id: 8,
     name: "Visakhapatnam Shipyard",
     location: "Visakhapatnam, Andhra Pradesh",
     category: "building",
-    dotColor: "bg-[#E33838]",
-    dotBg: "bg-[#FDF0F0]",
+    dotColor: "bg-[#2B4C7E]",
+    dotBg: "bg-[#EDF2F9]",
+    coords: "17.68° N, 83.21° E",
+    top: "65%",
+    left: "38%",
   },
   {
     id: 9,
@@ -85,20 +109,15 @@ const locationsData = [
     category: "building",
     dotColor: "bg-[#2B4C7E]",
     dotBg: "bg-[#EDF2F9]",
+    coords: "22.54° N, 88.32° E",
+    top: "49%",
+    left: "48%",
   },
-];
-
-const mapPins = [
-  { name: "Delhi", coords: "28.61° N, 77.20° E", top: "30%", left: "26%" },
-  { name: "Kolkata", coords: "22.57° N, 88.36° E", top: "48%", left: "42%" },
-  { name: "Mumbai", coords: "19.07° N, 72.87° E", top: "62%", left: "19%" },
-  { name: "Hyderabad", coords: "17.38° N, 78.48° E", top: "69%", left: "28%" },
-  { name: "Bangalore", coords: "12.97° N, 77.59° E", top: "78%", left: "21%" },
-  { name: "Chennai", coords: "13.08° N, 80.27° E", top: "80%", left: "30%" },
 ];
 
 const SecondSection = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [hoveredId, setHoveredId] = useState(null);
 
   const filteredLocations =
     activeFilter === "all"
@@ -106,12 +125,14 @@ const SecondSection = () => {
       : locationsData.filter((loc) => loc.category === activeFilter);
 
   return (
-    <section className="w-full bg-[#EFECE6] py-8 text-[#1A202C] font-sans">
-      <div className="max-w-[1562px] min-h-[852.8px] mx-auto px-4 md:px-30 flex flex-col lg:flex-row gap-8 justify-between items-start">
-        {/*  LEFT SECTION (810.65px)  */}
-        <div className="w-full lg:w-[810.65px] flex flex-col gap-4 shrink-0">
-          {/* Filter Bar (Height: 36px, Gap: 12px) */}
-          <div className="w-full h-9 flex items-center gap-3 overflow-x-auto scrollbar-none">
+    <section className="w-full bg-[#EFECE6] py-10 text-[#1A202C] font-sans">
+      <div className="max-w-[1562px] mx-auto px-4 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-8 justify-between items-start">
+        
+        {/* LEFT SECTION - MAP & FILTERS */}
+        <div className="w-full lg:w-[810px] flex flex-col gap-4 shrink-0">
+          
+          {/* Category Filter Chips */}
+          <div className="w-full h-9 flex items-center gap-3 overflow-x-auto scrollbar-none pb-1">
             {filterCategories.map((cat) => {
               const isActive = activeFilter === cat.id;
               return (
@@ -133,35 +154,41 @@ const SecondSection = () => {
             })}
           </div>
 
-          {/* Map Container (811px x 736px) */}
-          <div className="w-full h-184 bg-[#0B1E3D2E] rounded-2xl border border-[#CBD5E1] relative overflow-hidden flex flex-col justify-between p-6 shadow-sm">
+          {/* Interactive Map Canvas */}
+          <div className="w-full h-[650px] bg-[#0B1E3D]/10 rounded-2xl border border-gray-300 relative overflow-hidden p-6 shadow-xs">
             <img
               src={indiaMap}
-              alt="India Map"
-              className="w-full h-full object-cover rounded-2xl opacity-90"
+              alt="India Maritime Map"
+              className="w-full h-full object-contain rounded-2xl opacity-90 select-none"
             />
-            {/* Top Bar inside Map */}
-            <div className="flex items-center justify-between z-10">
-              <div />
-            </div>
 
-            {/* Simulated Map Canvas with Pin Overlay */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center p-8">
-              {/* Map Outline Graphic Placeholder */}
-              <div className="w-full h-full relative opacity-90">
-                {/* Pins */}
-                {mapPins.map((pin, idx) => (
+            {/* Dynamic Map Pins */}
+            <div className="absolute inset-0 pointer-events-none">
+              {filteredLocations.map((pin) => {
+                const isHovered = hoveredId === pin.id;
+                return (
                   <div
-                    key={idx}
-                    className="absolute flex items-center gap-2 group cursor-pointer"
+                    key={pin.id}
+                    onMouseEnter={() => setHoveredId(pin.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    className="absolute flex items-center gap-2 group cursor-pointer pointer-events-auto transition-transform hover:z-30"
                     style={{ top: pin.top, left: pin.left }}
                   >
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-white" />
+                    <span className="relative flex h-3.5 w-3.5">
+                      <span
+                        className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${pin.dotColor}`}
+                      />
+                      <span
+                        className={`relative inline-flex rounded-full h-3.5 w-3.5 ${pin.dotColor} border-2 border-white shadow-xs`}
+                      />
                     </span>
 
-                    <div className="bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-md border border-gray-200 shadow-md text-[10px] font-sans">
+                    {/* Tooltip Card on Hover */}
+                    <div
+                      className={`bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-md border border-gray-200 shadow-md text-[10px] transition-all duration-200 ${
+                        isHovered ? "scale-105 border-gray-400" : "opacity-85"
+                      }`}
+                    >
                       <p className="font-bold text-gray-900 leading-tight">
                         {pin.name}
                       </p>
@@ -170,11 +197,11 @@ const SecondSection = () => {
                       </p>
                     </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
 
-            {/* Map Legend / Scale Indicator */}
+            {/* Map Scale Legend */}
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-gray-200 text-[10px] font-mono text-gray-600 z-20 shadow-xs">
               <p className="font-semibold text-[9px] uppercase tracking-wider text-gray-500">
                 SCALE 1 : 12,000,000
@@ -187,39 +214,51 @@ const SecondSection = () => {
           </div>
         </div>
 
-        {/* RIGHT SECTION (389.34px)  */}
-        <div className="w-full lg:w-[389.34px] h-[772.8px] flex flex-col justify-between shrink-0">
-          <h2 className="text-xl font-serif font-bold text-gray-900 mb-5">
+        {/* RIGHT SECTION - LOCATION CARDS */}
+        <div className="w-full lg:w-[390px] h-[695px] flex flex-col shrink-0">
+          <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">
             Maritime Locations
           </h2>
 
-          {/* Cards Scrollable Container */}
+          {/* Cards Scrollable List */}
           <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 pr-1 space-y-3">
-            {filteredLocations.map((item) => (
-              <div
-                key={item.id}
-                className="w-full bg-white rounded-xl p-3.5 border border-gray-200/80 shadow-2xs hover:shadow-md transition-all flex items-center justify-between group cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  {/* Category Indicator Badge */}
-                  <div
-                    className={`w-9 h-9 rounded-full ${item.dotBg} flex items-center justify-center shrink-0`}
-                  >
-                    <span className={`w-3 h-3 rounded-full ${item.dotColor}`} />
+            {filteredLocations.map((item) => {
+              const isHovered = hoveredId === item.id;
+              return (
+                <div
+                  key={item.id}
+                  onMouseEnter={() => setHoveredId(item.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  className={`w-full bg-white rounded-xl p-3.5 border transition-all flex items-center justify-between group cursor-pointer ${
+                    isHovered
+                      ? "border-gray-400 shadow-md translate-x-0.5"
+                      : "border-gray-200/80 shadow-2xs hover:shadow-sm"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    {/* Category Dot */}
+                    <div
+                      className={`w-9 h-9 rounded-full ${item.dotBg} flex items-center justify-center shrink-0`}
+                    >
+                      <span
+                        className={`w-3 h-3 rounded-full ${item.dotColor}`}
+                      />
+                    </div>
+
+                    <div>
+                      <h3 className="text-xs font-serif font-bold text-gray-900 group-hover:text-blue-900 transition-colors">
+                        {item.name}
+                      </h3>
+                      <p className="text-[11px] text-gray-500">
+                        {item.location}
+                      </p>
+                    </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-xs font-serif font-bold text-gray-900 group-hover:text-blue-900 transition-colors">
-                      {item.name}
-                    </h3>
-                    <p className="text-[11px] text-gray-500">{item.location}</p>
-                  </div>
+                  <FiExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-700 transition-colors shrink-0 ml-2" />
                 </div>
-
-                {/* External Link Icon */}
-                <FiExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-700 transition-colors shrink-0 ml-2" />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
