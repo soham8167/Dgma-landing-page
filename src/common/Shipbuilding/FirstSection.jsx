@@ -2,7 +2,7 @@ import React from 'react';
 import { FiSearch, FiSliders } from 'react-icons/fi';
 import indiaMap from '../../assets/images/Shipbuilding/f1-bg.png';
 
-const FirstSection = () => {
+const FirstSection = ({ searchQuery, setSearchQuery }) => {
   return (
     <section className="w-full max-w-[1562px] h-140.25 relative mx-auto overflow-hidden text-white font-sans flex items-center">
       {/* Background Image Container */}
@@ -41,6 +41,8 @@ const FirstSection = () => {
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, location or capability..."
               className="w-full h-12 bg-black/40 backdrop-blur-md border border-white/20 rounded-lg pl-11 pr-4 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#D6AF36] transition-all"
             />

@@ -15,6 +15,7 @@ import MediaCentre from "./pages/MediaCentre";
 import IndiaMap from "./pages/IndiaMap";
 import Shipbuilding from "./pages/Shipbuilding";
 import ScrollToTop from "./components/ScrollToTop";
+import UniversalSearch from "./pages/Search";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/media-centre" element={<MediaCentre />} />
           <Route path="/india-map" element={<IndiaMap />} />
           <Route path="/shipbuilding" element={<Shipbuilding />} />
+          <Route path="/search" element={<UniversalSearch />} />
         </Route>
       </Routes>
     </BrowserRouter>

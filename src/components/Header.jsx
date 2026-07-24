@@ -47,6 +47,12 @@ const menuItems = [
     path: "/india-map",
     hasDropdown: false,
   },
+  {
+    label: "search",
+    path: "/search",
+    hasDropdown: false,
+  },
+
 ];
 
 const Header = () => {
@@ -99,25 +105,26 @@ const Header = () => {
         <div className="flex items-center justify-center py-3 relative">
           
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center space-x-6 lg:space-x-8 text-xs lg:text-sm font-normal">
-            {menuItems.map((item, index) => (
-                          <NavLink
-              to={item.path}
-              className={({ isActive }) =>
-                `flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 ${
-                  isActive
-                    ? "text-[#D6AF36]"
-                    : "text-gray-200 hover:text-[#D6AF36]"
-                }`
-              }
-            >
-              <span>{item.label}</span>
-              {item.hasDropdown && (
-                <FiChevronDown className="w-3 h-3 text-gray-300" />
-              )}
-            </NavLink>
-            ))}
-          </nav>
+          <nav className="hidden lg:flex flex-1 items-center justify-center gap-4 xl:gap-6 2xl:gap-8 text-xs xl:text-sm font-normal min-w-0 mr-16">
+  {menuItems.map((item) => (
+    <NavLink
+      key={item.path}
+      to={item.path}
+      className={({ isActive }) =>
+        `flex items-center gap-1 whitespace-nowrap transition-colors duration-200 ${
+          isActive
+            ? "text-[#D6AF36]"
+            : "text-gray-200 hover:text-[#D6AF36]"
+        }`
+      }
+    >
+      <span>{item.label}</span>
+      {item.hasDropdown && (
+        <FiChevronDown className="w-3 h-3 shrink-0 text-gray-300" />
+      )}
+    </NavLink>
+  ))}
+</nav>
 
           {/* Right Actions - Absolute to right edge on desktop */}
         
@@ -160,15 +167,21 @@ const Header = () => {
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
           <nav className="lg:hidden border-t border-white/10 py-2 flex flex-col space-y-3 px-2">
-            {menuItems.map((item, index) => (
-              <a
-                key={index}
-                href="#"
-                className="flex items-center justify-between text-[#FFFFFFCC] hover:text-[#D6AF36] text-sm py-1"
-              >
+            {menuItems.map((item) => (
+              <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 ${
+                  isActive
+                    ? "text-[#D6AF36]"
+                    : "text-gray-200 hover:text-[#D6AF36]"
+                }`
+              }
+            >
                 <span>{item.label}</span>
                 {item.hasDropdown && <FiChevronDown className="w-4 h-4 text-gray-400" />}
-              </a>
+              </NavLink>
             ))}
             <div className="pt-3 border-t border-white/10 flex justify-start">
               <button className="w-full bg-[#D6AF36] hover:bg-[#c29e2e] text-[#0A284D] font-bold py-2.5 rounded-md text-xs tracking-wide transition-colors duration-200">

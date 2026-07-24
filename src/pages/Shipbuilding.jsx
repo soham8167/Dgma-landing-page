@@ -1,14 +1,16 @@
-import React from 'react'
-import FirstSection from '../common/Shipbuilding/FirstSection'
-import SecondSection from '../common/Shipbuilding/SecondSection'
+import React, { useState } from 'react';
+import FirstSection from '../common/Shipbuilding/FirstSection';
+import SecondSection from '../common/Shipbuilding/SecondSection';
 
 const Shipbuilding = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <div>
-      <FirstSection/>
-      <SecondSection/>
+      <FirstSection searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <SecondSection searchQuery={searchQuery} />
     </div>
-  )
-}
+  );
+};
 
-export default Shipbuilding
+export default Shipbuilding;
