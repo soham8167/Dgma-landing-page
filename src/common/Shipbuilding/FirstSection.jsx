@@ -22,7 +22,7 @@ const FirstSection = ({
   };
 
   return (
-    <section className="w-full max-w-[1562px] min-h-[380px] relative mx-auto overflow-hidden text-white font-sans flex items-center py-12">
+    <section className="w-full max-w-[1562px] min-h-95 relative mx-auto overflow-hidden text-white font-sans flex items-center py-12">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
@@ -31,7 +31,7 @@ const FirstSection = ({
           className="w-full h-full object-cover object-center"
         />
         {/* Dark Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/70 to-black/50" />
       </div>
 
       {/* Content Layer */}
@@ -52,7 +52,7 @@ const FirstSection = ({
         </p>
 
         {/* Search & Filter Controls Box */}
-        <div className="flex flex-col gap-3 max-w-[700px]">
+        <div className="flex flex-col gap-3 max-w-175">
           {/* Search Input Box + Reset Button */}
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
             <div className="relative w-full flex-1">

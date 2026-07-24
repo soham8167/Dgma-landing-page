@@ -129,7 +129,7 @@ const SecondSection = () => {
       <div className="max-w-[1562px] mx-auto px-4 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-8 justify-between items-start">
         
         {/* LEFT SECTION - MAP & FILTERS */}
-        <div className="w-full lg:w-[810px] flex flex-col gap-4 shrink-0">
+        <div className="w-full lg:w-202.5 flex flex-col gap-4 shrink-0">
           
           {/* Category Filter Chips */}
           <div className="w-full h-9 flex items-center gap-3 overflow-x-auto scrollbar-none pb-1">
@@ -155,7 +155,7 @@ const SecondSection = () => {
           </div>
 
           {/* Interactive Map Canvas */}
-          <div className="w-full h-[650px] bg-[#0B1E3D]/10 rounded-2xl border border-gray-300 relative overflow-hidden p-6 shadow-xs">
+          <div className="w-full h-162.5 bg-[#0B1E3D]/10 rounded-2xl border border-gray-300 relative overflow-hidden p-6 shadow-xs">
             <img
               src={indiaMap}
               alt="India Maritime Map"
@@ -215,7 +215,7 @@ const SecondSection = () => {
         </div>
 
         {/* RIGHT SECTION - LOCATION CARDS */}
-        <div className="w-full lg:w-[390px] h-[695px] flex flex-col shrink-0">
+        <div className="w-full lg:w-97.5 h-173.75 flex flex-col shrink-0">
           <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">
             Maritime Locations
           </h2>

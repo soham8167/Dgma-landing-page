@@ -24,7 +24,7 @@ const Hero = () => {
           
           {/* Label with dash line */}
           <div className="flex items-center space-x-2.5">
-            <span className="w-5 h-[2px] bg-[#D6AF36]" />
+            <span className="w-5 h-0.5 bg-[#D6AF36]" />
             <span className="text-[#D6AF36] font-bold text-xs sm:text-sm tracking-wider uppercase">
               WELCOME TO DG SHIPPING
             </span>

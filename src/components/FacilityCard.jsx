@@ -13,7 +13,7 @@ const FacilityCard = ({
 }) => {
   return (
     <article className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition hover:shadow-md">
-      <div className="aspect-[16/10] w-full overflow-hidden">
+      <div className="aspect-16/10 w-full overflow-hidden">
         <img
           src={image}
           alt={name}

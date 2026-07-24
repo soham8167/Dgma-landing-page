@@ -10,7 +10,7 @@ const ShipyardCard = ({
   image,
 }) => {
   return (
-    <div className="w-full max-w-[320px] h-[400px] bg-[#E8F0EC]/80 backdrop-blur-xs rounded-xl border border-[#C2D8CE] shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer">
+    <div className="w-full max-w-[320px] h-100 bg-[#E8F0EC]/80 backdrop-blur-xs rounded-xl border border-[#C2D8CE] shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer">
       <div className="w-full h-40 bg-[#22332F] relative overflow-hidden shrink-0">
         {image ? (
           <img
@@ -19,7 +19,7 @@ const ShipyardCard = ({
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
+          <div className="w-full h-full bg-linear-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
         )}
 
         <div className="absolute top-3 left-3 w-7 h-7 bg-black/60 backdrop-blur-md rounded-md border border-white/20 flex items-center justify-center text-white">

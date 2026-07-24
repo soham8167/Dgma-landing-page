@@ -198,7 +198,7 @@ const SecondSection = ({
 
   return (
     <section className="w-full bg-[#D8E5DF] text-[#1B2A26] font-sans py-8 md:py-12 lg:py-16 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 mx-auto flex flex-col justify-between min-h-screen">
-      <div className="w-full max-w-[1536px] mx-auto">
+      <div className="w-full max-w-384 mx-auto">
         {/* TOOLBAR / RESULTS HEADER */}
         <div className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 md:mb-8">
           <p className="text-sm font-medium text-[#425B54]">
@@ -252,7 +252,7 @@ const SecondSection = ({
               {filteredShipyards.map((item) => (
                 <div
                   key={item.id}
-                  className="w-full h-[410px] bg-[#E8F0EC]/80 backdrop-blur-xs rounded-xl border border-[#C2D8CE] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer"
+                  className="w-full h-102.5 bg-[#E8F0EC]/80 backdrop-blur-xs rounded-xl border border-[#C2D8CE] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer"
                 >
                   {/* Card Image Banner */}
                   <div className="w-full h-40 bg-[#22332F] relative overflow-hidden shrink-0">
@@ -263,7 +263,7 @@ const SecondSection = ({
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
+                      <div className="w-full h-full bg-linear-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
                     )}
 
                     {/* Top Left Icon Overlay Badge */}
@@ -353,7 +353,7 @@ const SecondSection = ({
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
+                        <div className="w-full h-full bg-linear-to-tr from-[#1B2E2A] via-[#2A423C] to-[#3B5A52]" />
                       )}
                     </div>
                     <div>
