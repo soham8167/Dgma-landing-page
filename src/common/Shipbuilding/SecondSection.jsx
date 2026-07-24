@@ -1,151 +1,155 @@
-import React, { useState } from 'react';
-import s1 from '../../assets/images/Shipbuilding/s1.png';
-import s2 from '../../assets/images/Shipbuilding/s2.png';
-import s3 from '../../assets/images/Shipbuilding/s3.png';
-import s4 from '../../assets/images/Shipbuilding/s4.png';
-import s5 from '../../assets/images/Shipbuilding/s5.png';
-import s6 from '../../assets/images/Shipbuilding/s6.png';
-import s7 from '../../assets/images/Shipbuilding/s7.png';
-import s8 from '../../assets/images/Shipbuilding/s8.png';
-import s9 from '../../assets/images/Shipbuilding/s9.png';
-import s10 from '../../assets/images/Shipbuilding/s10.png';
-import s11 from '../../assets/images/Shipbuilding/s11.png';
-import s12 from '../../assets/images/Shipbuilding/s12.png';
-import { 
-  FiMapPin, 
-  FiStar, 
-  FiMap, 
-  FiGrid, 
-  FiList, 
-  FiAnchor, 
-  FiBriefcase 
-} from 'react-icons/fi';
+import React, { useState } from "react";
+import s1 from "../../assets/images/Shipbuilding/s1.png";
+import s2 from "../../assets/images/Shipbuilding/s2.png";
+import s3 from "../../assets/images/Shipbuilding/s3.png";
+import s4 from "../../assets/images/Shipbuilding/s4.png";
+import s5 from "../../assets/images/Shipbuilding/s5.png";
+import s6 from "../../assets/images/Shipbuilding/s6.png";
+import s7 from "../../assets/images/Shipbuilding/s7.png";
+import s8 from "../../assets/images/Shipbuilding/s8.png";
+import s9 from "../../assets/images/Shipbuilding/s9.png";
+import s10 from "../../assets/images/Shipbuilding/s10.png";
+import s11 from "../../assets/images/Shipbuilding/s11.png";
+import s12 from "../../assets/images/Shipbuilding/s12.png";
+import {
+  FiMapPin,
+  FiStar,
+  FiMap,
+  FiGrid,
+  FiList,
+  FiAnchor,
+  FiBriefcase,
+} from "react-icons/fi";
 
-const shipyardsData = [
+export const shipyardsData = [
   {
     id: 1,
-    name: 'Cochin Shipyard Limited',
-    location: 'Kochi, Kerala',
-    rating: '4.6',
-    capabilities: 'Commercial Vessels / Offshore / Naval',
-    capacity: '1.50 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001', 'OHSAS 18001'],
+    name: "Cochin Shipyard Limited",
+    location: "Kochi, Kerala",
+    rating: "4.6",
+    capabilities: "Commercial Vessels / Offshore / Naval",
+    capacity: "1.50 Million DWT",
+    tags: ["ISO 9001", "ISO 14001", "OHSAS 18001"],
     image: s1,
   },
   {
     id: 2,
-    name: 'Mazagon Dock Shipbuilders Limited',
-    location: 'Mumbai, Maharashtra',
-    rating: '4.7',
-    capabilities: 'Naval Ships / Submarines / Commercial',
-    capacity: '1.30 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001', 'OHSAS 18001'],
+    name: "Mazagon Dock Shipbuilders Limited",
+    location: "Mumbai, Maharashtra",
+    rating: "4.7",
+    capabilities: "Naval Ships / Submarines / Commercial",
+    capacity: "1.30 Million DWT",
+    tags: ["ISO 9001", "ISO 14001", "OHSAS 18001"],
     image: s2,
   },
   {
     id: 3,
-    name: 'Garden Reach Shipbuilders',
-    location: 'Kolkata, West Bengal',
-    rating: '4.5',
-    capabilities: 'Naval Ships / Offshore / Repairs',
-    capacity: '0.80 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Garden Reach Shipbuilders",
+    location: "Kolkata, West Bengal",
+    rating: "4.5",
+    capabilities: "Naval Ships / Offshore / Repairs",
+    capacity: "0.80 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s3,
   },
   {
     id: 4,
-    name: 'Larsen & Toubro Shipbuilding Limited',
-    location: 'Hazira, Gujarat',
-    rating: '4.6',
-    capabilities: 'Offshore / Subsea / Specialized Vessels',
-    capacity: '1.20 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001', 'OHSAS 18001'],
+    name: "Larsen & Toubro Shipbuilding Limited",
+    location: "Hazira, Gujarat",
+    rating: "4.6",
+    capabilities: "Offshore / Subsea / Specialized Vessels",
+    capacity: "1.20 Million DWT",
+    tags: ["ISO 9001", "ISO 14001", "OHSAS 18001"],
     image: s4,
   },
   {
     id: 5,
-    name: 'Hindustan Shipyard Limited',
-    location: 'Visakhapatnam, Andhra Pradesh',
-    rating: '4.3',
-    capabilities: 'Commercial / Naval / Offshore',
-    capacity: '0.75 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Hindustan Shipyard Limited",
+    location: "Visakhapatnam, Andhra Pradesh",
+    rating: "4.3",
+    capabilities: "Commercial / Naval / Offshore",
+    capacity: "0.75 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s5,
   },
   {
     id: 6,
-    name: 'ABG Shipyard Limited',
-    location: 'Dahej, Gujarat',
-    rating: '4.2',
-    capabilities: 'Offshore Vessels / Commercial / Repairs',
-    capacity: '0.75 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001', 'OHSAS 18001'],
+    name: "ABG Shipyard Limited",
+    location: "Dahej, Gujarat",
+    rating: "4.2",
+    capabilities: "Offshore Vessels / Commercial / Repairs",
+    capacity: "0.75 Million DWT",
+    tags: ["ISO 9001", "ISO 14001", "OHSAS 18001"],
     image: s6,
   },
   {
     id: 7,
-    name: 'Swan Defence and Heavy Industries',
-    location: 'Mumbai, Maharashtra',
-    rating: '4.4',
-    capabilities: 'Naval Ships / Defence Vessels',
-    capacity: '0.40 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Swan Defence and Heavy Industries",
+    location: "Mumbai, Maharashtra",
+    rating: "4.4",
+    capabilities: "Naval Ships / Defence Vessels",
+    capacity: "0.40 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s7,
   },
   {
     id: 8,
-    name: 'Reliance Naval and Engineering Limited',
-    location: 'Mumbai, Maharashtra',
-    rating: '4.1',
-    capabilities: 'Defence Ships / Offshore',
-    capacity: '0.35 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Reliance Naval and Engineering Limited",
+    location: "Mumbai, Maharashtra",
+    rating: "4.1",
+    capabilities: "Defence Ships / Offshore",
+    capacity: "0.35 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s8,
   },
   {
     id: 9,
-    name: 'Titagarh Wagons Limited',
-    location: 'Kolkata, West Bengal',
-    rating: '4.0',
-    capabilities: 'Inland Vessels / Cargo Ships',
-    capacity: '0.30 Million DWT',
-    tags: ['ISO 9001'],
+    name: "Titagarh Wagons Limited",
+    location: "Kolkata, West Bengal",
+    rating: "4.0",
+    capabilities: "Inland Vessels / Cargo Ships",
+    capacity: "0.30 Million DWT",
+    tags: ["ISO 9001"],
     image: s9,
   },
   {
     id: 10,
-    name: 'Suryadipta Projects Private Limited',
-    location: 'Thane, Maharashtra',
-    rating: '4.0',
-    capabilities: 'Barges / Offshore Structures / Specialized',
-    capacity: '0.25 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Suryadipta Projects Private Limited",
+    location: "Thane, Maharashtra",
+    rating: "4.0",
+    capabilities: "Barges / Offshore Structures / Specialized",
+    capacity: "0.25 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s10,
   },
   {
     id: 11,
-    name: 'Bharat Heavy Electricals Limited',
-    location: 'Ranchi, Jharkhand',
-    rating: '3.9',
-    capabilities: 'Inland Vessels / Floating Structures',
-    capacity: '0.20 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Bharat Heavy Electricals Limited",
+    location: "Ranchi, Jharkhand",
+    rating: "3.9",
+    capabilities: "Inland Vessels / Floating Structures",
+    capacity: "0.20 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s11,
   },
   {
     id: 12,
-    name: 'Sika Interplant Systems Limited',
-    location: 'Kolkata, West Bengal',
-    rating: '3.9',
-    capabilities: 'Offshore Platforms / Modular Structures',
-    capacity: '0.20 Million DWT',
-    tags: ['ISO 9001', 'ISO 14001'],
+    name: "Sika Interplant Systems Limited",
+    location: "Kolkata, West Bengal",
+    rating: "3.9",
+    capabilities: "Offshore Platforms / Modular Structures",
+    capacity: "0.20 Million DWT",
+    tags: ["ISO 9001", "ISO 14001"],
     image: s12,
   },
 ];
 
-const SecondSection = ({ searchQuery = '', selectedState = 'all', selectedType = 'all' }) => {
-  const [viewMode, setViewMode] = useState('grid');
+const SecondSection = ({
+  searchQuery = "",
+  selectedState = "all",
+  selectedType = "all",
+}) => {
+  const [viewMode, setViewMode] = useState("grid");
 
   // Combined Search & Multi-Filter Logic
   const filteredShipyards = shipyardsData.filter((item) => {
@@ -162,23 +166,30 @@ const SecondSection = ({ searchQuery = '', selectedState = 'all', selectedType =
     }
 
     // 2. State Filter
-    if (selectedState !== 'all') {
-      const isStateMatch = item.location.toLowerCase().includes(selectedState.toLowerCase());
+    if (selectedState !== "all") {
+      const isStateMatch = item.location
+        .toLowerCase()
+        .includes(selectedState.toLowerCase());
       if (!isStateMatch) return false;
     }
 
     // 3. Category / Type Filter
-    if (selectedType !== 'all') {
+    if (selectedType !== "all") {
       const caps = item.capabilities.toLowerCase();
 
-      if (selectedType === 'Commercial & Defense') {
-        if (!caps.includes('commercial') || (!caps.includes('naval') && !caps.includes('defence'))) return false;
-      } else if (selectedType === 'Defense Sector') {
-        if (!caps.includes('naval') && !caps.includes('defence')) return false;
-      } else if (selectedType === 'Commercial Shipyard') {
-        if (!caps.includes('commercial')) return false;
-      } else if (selectedType === 'Ship Repair & Heavy') {
-        if (!caps.includes('repair') && !caps.includes('offshore')) return false;
+      if (selectedType === "Commercial & Defense") {
+        if (
+          !caps.includes("commercial") ||
+          (!caps.includes("naval") && !caps.includes("defence"))
+        )
+          return false;
+      } else if (selectedType === "Defense Sector") {
+        if (!caps.includes("naval") && !caps.includes("defence")) return false;
+      } else if (selectedType === "Commercial Shipyard") {
+        if (!caps.includes("commercial")) return false;
+      } else if (selectedType === "Ship Repair & Heavy") {
+        if (!caps.includes("repair") && !caps.includes("offshore"))
+          return false;
       }
     }
 
@@ -191,7 +202,11 @@ const SecondSection = ({ searchQuery = '', selectedState = 'all', selectedType =
         {/* TOOLBAR / RESULTS HEADER */}
         <div className="w-full flex items-center justify-between mb-8">
           <p className="text-sm font-medium text-[#425B54]">
-            Showing <span className="font-bold text-[#1B2A26]">{filteredShipyards.length}</span> results
+            Showing{" "}
+            <span className="font-bold text-[#1B2A26]">
+              {filteredShipyards.length}
+            </span>{" "}
+            results
           </p>
 
           <div className="flex items-center gap-2">
@@ -204,17 +219,21 @@ const SecondSection = ({ searchQuery = '', selectedState = 'all', selectedType =
             {/* Grid / List View Controls */}
             <div className="flex items-center bg-[#C9DDD5] border border-[#A8C8BC] rounded-lg p-0.5">
               <button
-                onClick={() => setViewMode('grid')}
+                onClick={() => setViewMode("grid")}
                 className={`p-1.5 rounded-md transition-all cursor-pointer ${
-                  viewMode === 'grid' ? 'bg-white text-[#1B2A26] shadow-xs' : 'text-[#527068] hover:text-[#1B2A26]'
+                  viewMode === "grid"
+                    ? "bg-white text-[#1B2A26] shadow-xs"
+                    : "text-[#527068] hover:text-[#1B2A26]"
                 }`}
               >
                 <FiGrid className="w-3.5 h-3.5" />
               </button>
               <button
-                onClick={() => setViewMode('list')}
+                onClick={() => setViewMode("list")}
                 className={`p-1.5 rounded-md transition-all cursor-pointer ${
-                  viewMode === 'list' ? 'bg-white text-[#1B2A26] shadow-xs' : 'text-[#527068] hover:text-[#1B2A26]'
+                  viewMode === "list"
+                    ? "bg-white text-[#1B2A26] shadow-xs"
+                    : "text-[#527068] hover:text-[#1B2A26]"
                 }`}
               >
                 <FiList className="w-3.5 h-3.5" />
@@ -333,7 +352,8 @@ const SecondSection = ({ searchQuery = '', selectedState = 'all', selectedType =
               Partner with India's Shipbuilding Ecosystem
             </h2>
             <p className="text-xs md:text-sm text-emerald-100/80 font-normal max-w-170">
-              Collaborate, build and grow with world-class infrastructure, skilled talent and a commitment to global excellence.
+              Collaborate, build and grow with world-class infrastructure,
+              skilled talent and a commitment to global excellence.
             </p>
           </div>
         </div>
